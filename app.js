@@ -1,4 +1,4 @@
-// Clio Cal v1.0.0
+// Clio Cal v1.0.4
 const DB_NAME = 'clio-cal';
 const DB_VERSION = 1;
 const STORE = 'events';
