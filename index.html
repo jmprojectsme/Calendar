@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F6B5C">
+<title>Clio Cal</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topStrip">
+  <button id="profileBtn" class="avatarBtn" aria-label="Open profile">J</button>
+  <span class="appName">Calendar</span>
+</div>
+
+<header class="topbar">
+  <button id="prevMonth" class="navBtn" aria-label="Previous month">&#8249;</button>
+  <div class="monthTitle">
+    <h1 id="monthLabel">Month</h1>
+    <span id="yearLabel"></span>
+  </div>
+  <button id="nextMonth" class="navBtn" aria-label="Next month">&#8250;</button>
+</header>
+
+<div class="todayRow">
+  <button id="todayBtn" class="todayBtn">Jump to today</button>
+</div>
+
+<div class="weekRow" id="weekRow"></div>
+
+<main id="grid" class="grid"></main>
+
+<section id="dayPanel" class="dayPanel">
+  <div class="dayPanelHead">
+    <h2 id="dayPanelTitle">Today</h2>
+    <span id="dayPanelCount" class="countTag">0</span>
+  </div>
+  <ul id="eventList" class="eventList"></ul>
+  <p id="emptyState" class="emptyState">Nothing on the ledger for this day.</p>
+</section>
+
+<button id="fab" class="fab" aria-label="Add event">+</button>
+
+<div id="sheetOverlay" class="sheetOverlay">
+  <form id="eventForm" class="sheet">
+    <div class="sheetHandle"></div>
+    <h3 id="sheetTitle">New entry</h3>
+
+    <label class="field">
+      <span>Title</span>
+      <input type="text" id="fTitle" required maxlength="80" placeholder="What's happening">
+    </label>
+
+    <label class="field">
+      <span>Date</span>
+      <input type="date" id="fDate" required>
+    </label>
+
+    <label class="field">
+      <span>Time <em>(optional)</em></span>
+      <input type="time" id="fTime">
+    </label>
+
+    <label class="field">
+      <span>Notes <em>(optional)</em></span>
+      <textarea id="fNotes" rows="3" maxlength="300" placeholder="Details"></textarea>
+    </label>
+
+    <label class="field">
+      <span>Remind me</span>
+      <select id="fReminder">
+        <option value="">No reminder</option>
+        <option value="0">At time of event</option>
+        <option value="10">10 minutes before</option>
+        <option value="30">30 minutes before</option>
+        <option value="60">1 hour before</option>
+        <option value="1440">1 day before</option>
+      </select>
+    </label>
+
+    <input type="hidden" id="fId">
+
+    <div class="sheetActions">
+      <button type="button" id="deleteBtn" class="ghostBtn danger hidden">Delete</button>
+      <div class="sheetActionsRight">
+        <button type="button" id="cancelBtn" class="ghostBtn">Cancel</button>
+        <button type="submit" class="primaryBtn">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<div id="drawerOverlay" class="drawerOverlay">
+  <div class="drawer">
+    <div class="drawerHead">
+      <div class="avatarBig" id="avatarBig">J</div>
+      <div>
+        <p class="greeting" id="greetingText">Good morning</p>
+        <p class="nameRow">
+          <span id="nameText">Friend</span>
+          <button id="editNameBtn" class="editNameBtn" aria-label="Edit name">edit</button>
+        </p>
+      </div>
+      <button id="closeDrawerBtn" class="closeDrawerBtn" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="drawerSection">
+      <h4>Settings</h4>
+      <button id="notifRow" class="drawerRow">
+        <span>Notifications</span>
+        <span id="notifStatus" class="rowValue">Not set</span>
+      </button>
+    </div>
+
+    <div class="drawerSection">
+      <h4>Data</h4>
+      <button id="clearDataBtn" class="drawerRow danger">
+        <span>Clear all events</span>
+      </button>
+    </div>
+
+    <div class="drawerSection">
+      <h4>About</h4>
+      <div class="aboutBox">
+        <p class="aboutTitle">Clio Calendar</p>
+        <p class="aboutMeta">Version 1.0.2</p>
+        <p class="aboutMeta">Part of the Clio app suite</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+      </html>
+      
